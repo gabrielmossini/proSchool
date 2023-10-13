@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Detalhe de Aluno</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+
+<body>
+	<div class="container my-2">
+		<h1>Aluno</h1>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>RA</th>
+					<th>Nome</th>
+					<th>Nascimento</th>
+					<th>Sexo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<td th:text="${aluno.id}"></td>
+				<td th:text="${aluno.nome}"></td>
+				<td th:text="${aluno.dataNascimento}"> </td>
+				<td th:text="${aluno.sexo.nome}"> </td>
+			<thead>
+				<tr>
+					<th>Curso</th>
+					<th>Periodo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<td th:text="${aluno.curso.nome}"></td>
+				<td th:text="${aluno.periodo}"></td>
+				</tr>
+			</tbody>
+			<thead>
+				<tr>
+					<th>Escola</th>
+					<th>Ensino</th>
+				</tr>
+			</thead>
+			<tbody>
+				<td th:text="${aluno.escola.nome}"> </td>
+				<td th:text="${aluno.ensino}"> </td>
+				</tr>
+			</tbody>
+			<thead>
+				<tr>
+					<th>Bairro</th>
+					<th>Rua</th>
+					<th>Número</th>
+				</tr>
+			</thead>
+			<tbody>
+				<td th:text="${aluno.endereco.nome}"> </td>
+				<td th:text="${aluno.rua}"> </td>
+				<td th:text="${aluno.num}"> </td>
+				</tr>
+			</tbody>
+			<thead>
+				<tr>
+					<th>Email</th>
+					<th>Mãe/Responsável</th>
+					<th>Pai</th>
+					<th>Telefone (Primario)</th>
+					<th>Telefone (Secundario)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<td th:text="${aluno.email}"> </td>
+				<td th:text="${aluno.nomeMae}"> </td>
+				<td th:text="${aluno.nomePai}"> </td>
+				<td th:text="${aluno.telefone}"> </td>
+				<td th:text="${aluno.telefone1}"> </td>
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{/rh/alunos}" class="btn btn-primary">Voltar</a>
+		<a th:href="@{/rh/alunos/{id}(id=${aluno.id})}" class="btn btn-primary">Alterar</a>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Fragmento Geral</title>
+</head>
+
+<body>
+	<div th:fragment="header">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="btn-outline-primary" href="/">Centro Comunitário</a>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="nav-item">
+						<form name="logoutForm" th:action="@{/logout}" method="post">
+							<label>Olá <span sec:authentication="name">Usuário</span></label>
+							<a class="btn btn-outline-danger" aria-current="page" th:href="@{/logout}">Logout</a>
+						</form>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+</body>
+
+</html>

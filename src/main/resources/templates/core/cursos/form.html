@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Inserir Cursos</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+
+<body>
+	<div class="container my-2">
+		<h1>Cadastro de Cursos</h1>
+		<hr>
+		<h2>Dados sobre o Curso</h2>
+		<form action"#" th:action="@{/core/cursos/salvar}" th:object="${curso}" method="POST">
+			<input type="hidden" id="id" th:field="*{id}">
+
+			<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="text-danger"></span>
+			<input type="text" th:field="*{nome}" placeholder="Nome" class="form-control mb-4 col-4">
+
+			<div class="form-group">
+				<label for="status">Status:</label>
+				<input type="radio" name="status" id="status" value="Ativo" required>
+				<label for="status" id="botao">Ativo</label>
+				<input type="radio" name="status" id="status" value="Desativado" required>
+				<label for="status" id="botao">Desativado</label>
+			</div>
+
+			<button type="submit" class="btn btn-info col-2">Salvar</button>
+			<a th:href="@{/core/cursos}" class="btn btn-primary">Retornar para a lista de Cursos</a>
+		</form>
+		<hr>
+	</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+
+<body>
+	<header th:insert="fragmentos/geral.html :: header"> </header>
+	<div class="container my-2">
+		<h1>Funções</h1>
+		<a th:href="@{/core/funcoes/novo}" class="btn btn-primary btn-sm mb-3">Incluir</a>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nome</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="funcao : ${listaFuncoes}">
+					<td th:text="${funcao.id}"></td>
+					<td th:text="${funcao.nome}"></td>
+					<td th:text="${funcao.status}"></td>
+					<td>
+						<a th:href="@{/core/funcoes/{id}(id=${funcao.id})}" class="btn btn-primary">Alterar</a>
+						<a th:href="@{/core/funcoes/excluir/{id}(id=${funcao.id})}" class="btn btn-danger">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a class="btn btn-primary btn-sm mb-3" href="/">Voltar</a>
+	</div>
+</body>
+
+</html>

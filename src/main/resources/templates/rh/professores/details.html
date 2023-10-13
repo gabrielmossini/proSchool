@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Detalhe de Professor</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+<body>
+	<div class="container my-2">
+		<h1>Professor</h1>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Nascimento</th>
+					<th>Curso</th>
+					<th>Email</th>
+					<th>Telefone (Principal)</th>
+					<th>Telefone (Secundário)</th>
+				</tr>
+			</thead>
+			<tbody>
+					<td th:text="${professor.nome}"></td>
+					<td th:text="${professor.dataNascimento}"></td>
+					<td th:text="${professor.curso.nome}"></td>
+					<td th:text="${professor.email}"> </td>
+					<td th:text="${professor.telefone}"> </td>
+					<td th:text="${professor.telefone1}"> </td>
+				</tr>
+			</tbody>
+		</table>
+   	<a th:href="@{/rh/professores}" class="btn btn-primary">Voltar</a>
+   	<a th:href="@{/rh/professores/{id}(id=${professor.id})}" class="btn btn-primary">Alterar</a>
+</body>
+</html>

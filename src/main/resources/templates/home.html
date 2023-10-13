@@ -1,0 +1,22 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Home</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<header th:insert="fragmentos/geral.html :: header"> </header>
+	<body>
+		<div class="container">
+			<div class="row">
+				<h1> Bem Vindo</h1>
+			</div>
+			<div>
+				<a class="btn btn-outline-primary" href="/rh/professores">Professores</a>
+				<a class="btn btn-outline-primary" href="/rh/alunos">Alunos</a>
+			</div>
+		</div>
+	</body>
+</html>
