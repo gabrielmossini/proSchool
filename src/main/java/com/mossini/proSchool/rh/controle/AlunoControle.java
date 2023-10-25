@@ -66,8 +66,9 @@ public class AlunoControle {
 		if (alunoOpt.isEmpty()) {
 			throw new IllegalArgumentException("Aluno Invalido.");
 		}
-	    List<Curso> activatedCursos = cursoRepo.findByStatus("Ativo");		
+		
 		model.addAttribute("aluno", alunoOpt.get());
+	    List<Curso> activatedCursos = cursoRepo.findByStatus("Ativo");		
 		model.addAttribute("cursos", activatedCursos);
 		model.addAttribute("sexos", sexoRepo.findAll());
 		model.addAttribute("escolas", escolaRepo.findAll());

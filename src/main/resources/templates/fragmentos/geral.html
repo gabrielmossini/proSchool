@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8">
 	<title>Fragmento Geral</title>
@@ -16,7 +15,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li class="nav-item">
 						<form name="logoutForm" th:action="@{/logout}" method="post">
-							<label>Olá <span sec:authentication="name">Usuário</span></label>
+        					<h3 th:inline="text">Hello <span th:remove="tag" sec:authentication="name"></span>!</h3>
 							<a class="btn btn-outline-danger" aria-current="page" th:href="@{/logout}">Logout</a>
 						</form>
 					</li>

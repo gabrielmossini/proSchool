@@ -9,14 +9,22 @@
 <body>
 	<header th:insert="fragmentos/geral.html :: header"> </header>
 	<body>
-		<div class="container">
+		<div class="container my-2">
 			<div class="row">
 				<h1> Bem Vindo</h1>
 			</div>
-			<div>
+			<div class="col my-2">
 				<a class="btn btn-outline-primary" href="/rh/professores">Professores</a>
 				<a class="btn btn-outline-primary" href="/rh/alunos">Alunos</a>
+				<a class="btn btn-outline-primary" href="/core/cursos">Cursos</a>
 			</div>
+			<div class="col my-2">
+				<a class="btn btn-outline-primary" href="/seguranca/usuarios">Usuários</a>
+				<a class="btn btn-outline-primary" href="/core/escolas">Escolas</a>
+			</div>
+			<div class="col my-2">
+				<a class="btn btn-outline-primary" href="/matricula/notas">Notas</a>
+			</div>			
 		</div>
 	</body>
 </html>

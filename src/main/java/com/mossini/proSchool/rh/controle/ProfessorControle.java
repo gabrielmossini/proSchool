@@ -15,6 +15,8 @@ import com.mossini.proSchool.core.dominio.Curso;
 import com.mossini.proSchool.core.dominio.CursoRepositorio;
 import com.mossini.proSchool.rh.dominio.Professor;
 import com.mossini.proSchool.rh.dominio.ProfessorRepositorio;
+import com.mossini.proSchool.seguranca.dominio.Usuario;
+import com.mossini.proSchool.seguranca.dominio.UsuarioRepositorio;
 
 import jakarta.validation.Valid;
 
@@ -23,25 +25,29 @@ public class ProfessorControle {
 	
 	private ProfessorRepositorio professorRepo;
 	private CursoRepositorio cursoRepo;
+	private UsuarioRepositorio usuarioRepo;
 	
-	public ProfessorControle(ProfessorRepositorio professorRepo, CursoRepositorio cursoRepo) {
+	public ProfessorControle(ProfessorRepositorio professorRepo, CursoRepositorio cursoRepo, UsuarioRepositorio usuarioRepo) {
 		this.professorRepo = professorRepo;
 		this.cursoRepo = cursoRepo;
+		this.usuarioRepo = usuarioRepo;			
 	}
 	
 	@GetMapping("/rh/professores")
 	public String professores(Model model) {
 		model.addAttribute("listaProfessores", professorRepo.findAll());
 		model.addAttribute("cursos", cursoRepo.findAll());
+		model.addAttribute("usuarios", usuarioRepo.findAll());
 		return "rh/professores/index";
 	}
 	
 	@GetMapping("/rh/professores/novo")
 	public String novoProfessor(Model model) {
-		model.addAttribute("professor", new Professor(""));
+		model.addAttribute("professor", new Professor());
+		List<Usuario> Professor = usuarioRepo.findByStatus("Sim");
+		model.addAttribute("usuarios", Professor);
 	    List<Curso> activatedCursos = cursoRepo.findByStatus("Ativo");
-		model.addAttribute("cursos", activatedCursos);
-		
+		model.addAttribute("cursos", activatedCursos);		
 		return "rh/professores/form";
 	}
 	
@@ -53,6 +59,8 @@ public class ProfessorControle {
 		}
 		
 		model.addAttribute("professor", professorOpt.get());
+		List<Usuario> Professor = usuarioRepo.findByStatus("Sim");
+		model.addAttribute("usuarios", Professor);
 	    List<Curso> activatedCursos = cursoRepo.findByStatus("Ativo");
 		model.addAttribute("cursos", activatedCursos);
 		return "rh/professores/form";
@@ -61,6 +69,8 @@ public class ProfessorControle {
 	@PostMapping("rh/professores/salvar")
 	public String salvarProfessor(@Valid @ModelAttribute("professor") Professor professor, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
+			List<Usuario> Professor = usuarioRepo.findByStatus("Sim");
+			model.addAttribute("usuarios", Professor);
 		    List<Curso> activatedCursos = cursoRepo.findByStatus("Ativo");
 			model.addAttribute("cursos", activatedCursos);
 			return "rh/professores/form";

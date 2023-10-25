@@ -14,20 +14,12 @@
 			<thead>
 				<tr>
 					<th>Nome</th>
-					<th>Nascimento</th>
 					<th>Curso</th>
-					<th>Email</th>
-					<th>Telefone (Principal)</th>
-					<th>Telefone (Secundário)</th>
 				</tr>
 			</thead>
 			<tbody>
-					<td th:text="${professor.nome}"></td>
-					<td th:text="${professor.dataNascimento}"></td>
+					<td th:text="${professor.usuario.nome}"></td>
 					<td th:text="${professor.curso.nome}"></td>
-					<td th:text="${professor.email}"> </td>
-					<td th:text="${professor.telefone}"> </td>
-					<td th:text="${professor.telefone1}"> </td>
 				</tr>
 			</tbody>
 		</table>

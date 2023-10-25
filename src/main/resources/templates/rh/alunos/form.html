@@ -21,9 +21,9 @@
 			<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="text-danger"></span>
 			<input type="text" th:field="*{nome}" placeholder="Nome" class="form-control mb-4 col-4">
 
-			<input type="date" th:field="*{dataNascimento}" placeholder="Data Nascimento"
-				class="form-control mb-4 col-4">
-
+			<input type="date" th:field="*{dataNascimento}" placeholder="Data Nascimento" class="form-control mb-4 col-4"
+			 value="" min="1945-01-01" max="2009-01-01">
+			 
 			<select th:field="*{sexo}" class="form-control mb-4 col-4">
 				<option th:each="sexo: ${sexos}" th:value="${sexo.id}" th:text="${sexo.nome}"></option>
 			</select>
@@ -67,8 +67,8 @@
 				<span th:if="${#fields.hasErrors('rua')}" th:errors="*{rua}" class="text-danger"></span>
 				<input type="text" th:field="*{rua}" placeholder="Nome da Rua" class="form-control mb-4 col-4">
 
-				<label for="num" >Número da Casa:</label>
-				<input type="number" id="num" name="num" min="1" max="999">
+				<label for="num" class="mb-4">Número da Casa:</label>
+				<input type="number" id="num" name="num" min="1" max="9999">
 
 				<select th:field="*{endereco}" class="form-control mb-4">
 					<option th:each="endereco: ${enderecos}" th:value="${endereco.id}" th:text="${endereco.nome}">
@@ -91,6 +91,14 @@
 
 				<input type="text" th:field="*{telefone1}" placeholder="Telefone (Secundário)"
 					class="form-control mb-4 col-4">
+				
+				<div class="form-group mb-4 col-4" >
+					<label for="status">Situação do Aluno:</label>
+					<input type="radio" name="status" id="status" value="Ativo" required>
+					<label for="status" id="botao">Ativo</label>
+					<input type="radio" name="status" id="status" value="Desativado" required>
+					<label for="status" id="botao">Desativado</label>
+				</div>
 
 				<button type="submit" class="btn btn-info col-2">Salvar</button>
 				<a th:href="@{/rh/alunos}" class="btn btn-primary">Retornar para a lista de Alunos</a>

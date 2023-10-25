@@ -19,13 +19,11 @@ public class UsuarioService {
     private PasswordEncoder passwordEncoder;
 
     public Usuario createUsuario(Usuario usuario) {
-        // Encode the user's password before saving to the database
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         return usuarioRepo.save(usuario);
     }
 
     public Usuario updateUsuario(Usuario usuario) {
-        // Add logic to update a user's information here
         return usuarioRepo.save(usuario);
     }
 
