@@ -32,6 +32,7 @@ public class Professor{
 	
 	public Professor(Usuario usuario) {
 		this.usuario = usuario;
+		this.curso = curso;
 	}
 	
 	public Long getId() {

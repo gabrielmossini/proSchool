@@ -10,4 +10,6 @@ public interface CursoRepositorio extends JpaRepository<Curso, Long>{
 
 	List<Curso> findByStatus(String status);
 	
+	Curso findByNome(String nome);
+	
 }

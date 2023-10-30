@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -67,7 +68,7 @@ public class ProfessorControle {
 	}
 	
 	@PostMapping("rh/professores/salvar")
-	public String salvarProfessor(@Valid @ModelAttribute("professor") Professor professor, BindingResult bindingResult, Model model) {
+	public String salvarProfessor(@Valid @ModelAttribute("professor") Professor professor, Curso curso, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			List<Usuario> Professor = usuarioRepo.findByStatus("Sim");
 			model.addAttribute("usuarios", Professor);

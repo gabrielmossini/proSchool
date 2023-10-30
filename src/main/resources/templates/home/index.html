@@ -1,0 +1,66 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Página Inicial</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<header th:insert="fragmentos/geral.html :: header"> </header>
+	<div class="container my-2">
+		<h2>Bem Vindo!!</h2>
+		<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+			<div class="col">
+				<div class="card mb-4 shadow-sm">
+					<div class="card-header">
+						<h4 class="my-0 fw-normal">Alunos</h4>
+					</div>
+					<div class="card-body">
+						<ul class="list-unstyled mt-3 mb-4">
+							<img src="https://cdn-icons-png.flaticon.com/512/9472/9472983.png" alt="Imagem Aluno" width="200" height="200">
+							<li>Controle de Alunos,</li>
+							<li>Notas e Faltas</li>
+						</ul>
+						<a class="w-100 btn btn-lg btn-primary" th:href="@{/alunos/}">Acessar</a>
+					</div>
+				</div>
+			</div>
+			<div sec:authorize="hasAuthority('ADMIN')">
+				<div class="col">
+					<div class="card mb-4 shadow-sm">
+						<div class="card-header">
+							<h4 class="my-0 fw-normal">Professores</h4>
+						</div>
+						<div class="card-body">
+							<ul class="list-unstyled mt-3 mb-4">
+								<img src="https://cdn-icons-png.flaticon.com/512/9472/9472994.png" alt="Imagem Aluno" width="200" height="200">
+								<li>Controle de Professores e</li>
+								<li>Cursos</li>
+							</ul>
+							<a class="w-100 btn btn-lg btn-primary" th:href="@{/professores/}">Acessar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div sec:authorize="hasAuthority('ADMIN')">
+				<div class="col">
+					<div class="card mb-4 shadow-sm">
+						<div class="card-header">
+							<h4 class="my-0 fw-normal">Administrativo</h4>
+						</div>
+						<div class="card-body">
+							<ul class="list-unstyled mt-3 mb-4">
+								<img src="https://cdn-icons-png.flaticon.com/512/9473/9473009.png" alt="Imagem Aluno" width="200" height="200">
+								<li>Controle de Usuários</li>
+								<li>Administração do Sistema</li>
+							</ul>
+							<a class="w-100 btn btn-lg btn-primary" th:href="@{/administracao/}">Acessar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</html>

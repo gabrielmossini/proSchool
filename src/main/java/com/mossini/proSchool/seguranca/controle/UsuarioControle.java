@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,7 +41,7 @@ public class UsuarioControle {
 	
 	@GetMapping("/seguranca/usuarios/novo")
 	public String novoUsuario(Model model){
-		model.addAttribute("usuario", new Usuario(""));
+		model.addAttribute("usuario", new Usuario("",""));
 		model.addAttribute("sexos", sexoRepo.findAll());
 		model.addAttribute("funcoes", funcaoRepo.findAll());
 		return "seguranca/usuarios/form";
@@ -66,11 +67,22 @@ public class UsuarioControle {
 			model.addAttribute("funcoes", funcaoRepo.findAll());
 			return "seguranca/usuarios/form";
 		}
+		
+	    Usuario usuarioEncontrado = usuarioRepo.findByUsername(usuario.getUsername());
+	    if (usuarioEncontrado != null && usuarioEncontrado.getId() != usuario.getId()) {
+	        bindingResult.addError(new FieldError("usuario", "username", "Nome de usuário já está em uso."));
+	        model.addAttribute("sexos", sexoRepo.findAll());
+	        model.addAttribute("funcoes", funcaoRepo.findAll());
+	        return "seguranca/usuarios/form";
+	    }
 	    
-//		if (usuarioRepo.existsByUsername(usuario.getUsername())) {
-//	        bindingResult.rejectValue("username", "error.username", "Usuário já cadastrado.");
-//	        return "seguranca/usuarios/form";
-//	    }
+	    Usuario cpfEncontrado = usuarioRepo.findByCpf(usuario.getCpf());
+	    if (cpfEncontrado != null && cpfEncontrado.getId() != usuario.getId()) {
+	        bindingResult.addError(new FieldError("usuario", "cpf", "CPF já está em uso."));
+	        model.addAttribute("sexos", sexoRepo.findAll());
+	        model.addAttribute("funcoes", funcaoRepo.findAll());
+	        return "seguranca/usuarios/form";
+	    }
 		
 		usuarioRepo.save(usuario);
 		return "redirect:/seguranca/usuarios";
@@ -99,6 +111,4 @@ public class UsuarioControle {
 		usuarioRepo.delete(usuarioOpt.get());
 		return "redirect:/seguranca/usuarios";
 	}
-
-
 }

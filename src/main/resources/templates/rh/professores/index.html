@@ -25,14 +25,14 @@
 					<td th:text="${professor.usuario.nome}"></td>
 					<td th:text="${professor.curso.nome}"></td>
 					<td>
-						<a th:href="@{/rh/professores/{id}(id=${professor.id})}" class="btn btn-primary">Alterar</a>
-						<a th:href="@{/rh/professores/{id}/details(id=${professor.id})}" class="btn btn-warning">Detalhes</a>
+						<a th:href="@{/rh/professores/{id}(id=${professor.id})}" class="btn btn-warning">Alterar</a>
+						<a th:href="@{/rh/professores/{id}/details(id=${professor.id})}" class="btn btn-info">Detalhes</a>
 						<a th:href="@{/rh/professores/excluir/{id}(id=${professor.id})}" class="btn btn-danger">Excluir</a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<a class="btn btn-primary btn-sm mb-3" href="/">Voltar</a>
+		<a class="btn btn-primary btn-sm mb-3" href="/professores/">Voltar</a>
 	</div>
 </body>
 </html>

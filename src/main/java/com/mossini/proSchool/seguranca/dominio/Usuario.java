@@ -16,6 +16,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "TBUsuario")
@@ -37,7 +39,7 @@ public class Usuario {
 	@Column(name = "cpf", unique = true)
 	private String cpf;
 	
-	@NotBlank(message = "O usuario não pode ser vazio.")
+	@NotBlank(message = "O Usuario não pode ser vazio.")
 	@Column(name = "username", unique = true)
 	private String username;
 
@@ -55,8 +57,9 @@ public class Usuario {
 	@Deprecated
 	public Usuario() {}
 	
-	public Usuario(String nome) {
+	public Usuario(String nome, String password) {
 		this.nome = nome;
+		this.password = password;
 	}
 
 	public long getId() {

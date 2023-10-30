@@ -29,7 +29,7 @@
 					<td th:text="${funcao.nome}"></td>
 					<td th:text="${funcao.status}"></td>
 					<td>
-						<a th:href="@{/core/funcoes/{id}(id=${funcao.id})}" class="btn btn-primary">Alterar</a>
+						<a th:href="@{/core/funcoes/{id}(id=${funcao.id})}" class="btn btn-warning">Alterar</a>
 						<a th:href="@{/core/funcoes/excluir/{id}(id=${funcao.id})}" class="btn btn-danger">Excluir</a>
 					</td>
 				</tr>

@@ -25,7 +25,7 @@
 					<td th:text="${endereco.id}"></td>
 					<td th:text="${endereco.nome}"></td>
 					<td>
-						<a th:href="@{/core/enderecos/{id}(id=${endereco.id})}" class="btn btn-primary">Alterar</a>
+						<a th:href="@{/core/enderecos/{id}(id=${endereco.id})}" class="btn btn-warning">Alterar</a>
 						<a th:href="@{/core/enderecos/excluir/{id}(id=${endereco.id})}" class="btn btn-danger">Excluir</a>
 					</td>
 				</tr>
